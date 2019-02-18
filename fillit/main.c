@@ -14,9 +14,14 @@
 
 int				output(t_solve_space *solve_space, unsigned int cur_size)
 {
-	for (unsigned int i = 0; i < cur_size; i++)
+	int i;
+	int j;
+
+	i = -1;
+	while(++i < cur_size)
 	{
-		for (unsigned int j = 0; j < cur_size; j++)
+		j = -1;
+		while (++j < cur_size)
 		{
 			if (SS->map[i * cur_size + j] >= 'A' && SS->map[i * cur_size + j] <= 'Z')
 				printf("%c", SS->map[i * cur_size + j]);
@@ -247,7 +252,7 @@ int				main(int argc, char *argv[])
 	SS->tetramino = (USI*) malloc(sizeof(USI) * SS->tet_num);
 	ft_memcpy(SS->tetramino, IS.tets, (IS.size_tets + 1) * sizeof(USI));
 
-	i = estimate_min(SS->tet_num);
+	i = estimate_min(SS->tet_num) - 1;
 	while (i++ <= SS->abs_size)
 	{
 		if (solver(SS, 0, 0, i))
