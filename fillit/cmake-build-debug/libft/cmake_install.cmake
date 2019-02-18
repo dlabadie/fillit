@@ -1,4 +1,4 @@
-# Install script for directory: /Users/ekedge-w/projects/fillit/fillit/fillit/libft
+# Install script for directory: /Users/ekedge-w/projects/fillit/fillit/libft
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -218,14 +218,14 @@ int				die(char *str)
 	return (1);
 }
 
-void			init_SS(t_input_space IS, t_solve_space *SS)
+void			init_SS(t_input_space IS, t_solve_space **SS)
 {
-	SS = ft_memalloc(sizeof(t_solve_space));
-	SS->abs_size = estimate_max(IS.size_tets);
-	SS->map = ft_memalloc(sizeof(char) * (SS->abs_size * SS->abs_size + 1));
-	SS->tet_num = IS.size_tets;
-	SS->tetramino = (USI*) malloc(sizeof(USI) * SS->tet_num);
-	ft_memcpy(SS->tetramino, IS.tets, (IS.size_tets + 1) * sizeof(USI));
+	*SS = ft_memalloc(sizeof(t_solve_space));
+	(*SS)->abs_size = estimate_max(IS.size_tets);
+	(*SS)->map = ft_memalloc(sizeof(char) * ((*SS)->abs_size * (*SS)->abs_size + 1));
+	(*SS)->tet_num = IS.size_tets;
+	(*SS)->tetramino = (USI*) malloc(sizeof(USI) * (*SS)->tet_num);
+	ft_memcpy((*SS)->tetramino, IS.tets, (IS.size_tets + 1) * sizeof(USI));
 }
 
 int				main(int argc, char *argv[])
@@ -243,15 +243,7 @@ int				main(int argc, char *argv[])
 		close(IS.fd);
 		return (die("error"));
 	}
-
-
-	SS = ft_memalloc(sizeof(t_solve_space));
-	SS->abs_size = estimate_max(IS.size_tets);
-	SS->map = ft_memalloc(sizeof(char) * (SS->abs_size * SS->abs_size + 1));
-	SS->tet_num = IS.size_tets;
-	SS->tetramino = (USI*) malloc(sizeof(USI) * SS->tet_num);
-	ft_memcpy(SS->tetramino, IS.tets, (IS.size_tets + 1) * sizeof(USI));
-
+	init_SS(IS, &SS);
 	i = estimate_min(SS->tet_num) - 1;
 	while (i++ <= SS->abs_size)
 	{

@@ -120,10 +120,7 @@ int						solver(t_solve_space *solve_space,
 								  unsigned int cur_tet,
 								  unsigned int cur_size)
 {
-	/**/
-//	output(solve_space, cur_size);
-//	printf("\n");
-	/**/
+
 	if (cur_tet == SS->tet_num)
 		return (1);
 	else if (find_place(solve_space, &place, cur_tet, cur_size) == 0)

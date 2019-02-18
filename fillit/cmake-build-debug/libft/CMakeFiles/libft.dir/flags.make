@@ -6,5 +6,5 @@ C_FLAGS = -g   -std=gnu99
 
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/ekedge-w/projects/fillit/fillit/fillit/libft 
+C_INCLUDES = -I/Users/ekedge-w/projects/fillit/fillit/libft 
 

@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/Users/ekedge-w/projects/fillit/fillit/fillit/fillit.h
+/Users/ekedge-w/projects/fillit/fillit/fillit.h
 stdio.h
 -
 stdlib.h
@@ -20,9 +20,9 @@ sys/types.h
 sys/uio.h
 -
 libft/libft.h
-/Users/ekedge-w/projects/fillit/fillit/fillit/libft/libft.h
+/Users/ekedge-w/projects/fillit/fillit/libft/libft.h
 
-/Users/ekedge-w/projects/fillit/fillit/fillit/libft/libft.h
+/Users/ekedge-w/projects/fillit/fillit/libft/libft.h
 string.h
 -
 unistd.h
@@ -32,7 +32,7 @@ stdlib.h
 fcntl.h
 -
 
-/Users/ekedge-w/projects/fillit/fillit/fillit/main.c
+/Users/ekedge-w/projects/fillit/fillit/solver.c
 fillit.h
-/Users/ekedge-w/projects/fillit/fillit/fillit/fillit.h
+/Users/ekedge-w/projects/fillit/fillit/fillit.h
 
