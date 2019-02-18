@@ -48,10 +48,10 @@ RM = /Users/ekedge-w/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/ekedge-w/projects/fillit/fillit
+CMAKE_SOURCE_DIR = /Users/ekedge-w/projects/fillit/fillit/fillit
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/ekedge-w/projects/fillit/fillit/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/ekedge-w/projects/fillit/fillit/fillit/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ekedge-w/projects/fillit/fillit/cmake-build-debug/CMakeFiles /Users/ekedge-w/projects/fillit/fillit/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ekedge-w/projects/fillit/fillit/fillit/cmake-build-debug/CMakeFiles /Users/ekedge-w/projects/fillit/fillit/fillit/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ekedge-w/projects/fillit/fillit/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ekedge-w/projects/fillit/fillit/fillit/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -163,6 +163,33 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.c.s
 .PHONY : main.c.s
 
+solver.o: solver.c.o
+
+.PHONY : solver.o
+
+# target to build an object file
+solver.c.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/solver.c.o
+.PHONY : solver.c.o
+
+solver.i: solver.c.i
+
+.PHONY : solver.i
+
+# target to preprocess a source file
+solver.c.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/solver.c.i
+.PHONY : solver.c.i
+
+solver.s: solver.c.s
+
+.PHONY : solver.s
+
+# target to generate assembly for a file
+solver.c.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/solver.c.s
+.PHONY : solver.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -176,6 +203,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... solver.o"
+	@echo "... solver.i"
+	@echo "... solver.s"
 .PHONY : help
 
 

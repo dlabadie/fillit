@@ -23,6 +23,7 @@
 # include "libft/libft.h"
 
 # define SS solve_space
+# define IS input_space
 # define USI unsigned short int
 
 typedef struct		s_solve_space
@@ -33,19 +34,25 @@ typedef struct		s_solve_space
 	unsigned int	tet_num;
 }					t_solve_space;
 
+typedef struct		s_input_space
+{
+	USI				tets[26];
+	USI				size_tets;
+	int				fd;
+	USI				block;
+	char			*line;
+	size_t			line_size;
+	char			tetramino[17];
+	int				err;
+}					t_input_space;
+
 int					solver(t_solve_space *solve_space,
 						   unsigned int place,
 						   unsigned int cur_tet,
 						   unsigned int cur_size);
 
-t_solve_space		*ft_input(void);
-int					ft_output(t_solve_space *solve_space, unsigned int cur_size);
-int					ft_delete(t_solve_space **solve_space);
-
 unsigned int		estimate_max(unsigned int tet_num);
 unsigned int		estimate_min(unsigned int tet_num);
-
-unsigned int		ft_sqrt(size_t n);
 
 
 

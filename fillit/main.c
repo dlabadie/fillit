@@ -1,9 +1,45 @@
-#include "libft.h"
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                			    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ekedge-w <ekedge-w@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/12/10 10:26:25 by ekedge-w          #+#    #+#             */
+/*   Updated: 2019/02/18 15:52:31 by ekedge-w         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#define USI unsigned short int
+#include "fillit.h"
 
-int	search_invalid_ch(char *line)
+int				output(t_solve_space *solve_space, unsigned int cur_size)
+{
+	for (unsigned int i = 0; i < cur_size; i++)
+	{
+		for (unsigned int j = 0; j < cur_size; j++)
+		{
+			if (SS->map[i * cur_size + j] >= 'A' && SS->map[i * cur_size + j] <= 'Z')
+				printf("%c", SS->map[i * cur_size + j]);
+			else if (SS->map[i * cur_size + j] == '\0')
+				printf(".");
+			else
+				printf("\n%i\n", SS->map[i * cur_size + j]);
+		}
+		printf("\n");
+	}
+	return (0);
+}
+unsigned int	estimate_min(unsigned int tet_num)
+{
+	return (ft_sqrt(tet_num * 4));
+}
+
+unsigned int	estimate_max(unsigned int tet_num)
+{
+	return (tet_num * 4);
+}
+
+int				search_invalid_ch(char *line)
 {
 	if (line == NULL)
 		return (-1);
@@ -16,7 +52,7 @@ int	search_invalid_ch(char *line)
 	return (1);
 }
 
-int	create_int(USI *positions, USI *result)
+int				create_int(USI *positions, USI *result)
 {
 	int i;
 
@@ -29,7 +65,7 @@ int	create_int(USI *positions, USI *result)
 	return (11);
 }
 
-int	shift_upper_left(USI *positions)
+int				shift_upper_left(USI *positions)
 {
 	USI top;
 	USI left;
@@ -54,7 +90,7 @@ int	shift_upper_left(USI *positions)
 	return (21);
 }
 
-int	search_pos(char *tetramino, USI *positions)
+int				search_pos(char *tetramino, USI *positions)
 {
 	int i;
 	int j;
@@ -76,7 +112,7 @@ int	search_pos(char *tetramino, USI *positions)
 	return (31);
 }
 
-int	init_base(USI *base)
+int				init_base(USI *base)
 {
 	if (!base)
 		return (-41);
@@ -102,7 +138,7 @@ int	init_base(USI *base)
 	return (41);
 }
 
-int	search_in_base(int tetramino)
+int				search_in_base(int tetramino)
 {
 	int i;
 	USI base[19];
@@ -120,7 +156,7 @@ int	search_in_base(int tetramino)
 	return (50);
 }
 
-int	tet_to_array(USI *tets, USI *size_tets, char *tetramino)
+int				tet_to_array(USI *tets, USI *size_tets, char *tetramino)
 {
 	USI positions[4];
 	int err;
@@ -144,71 +180,81 @@ int	tet_to_array(USI *tets, USI *size_tets, char *tetramino)
 		return (err);
 }
 
-int	input_array(USI *tets, USI *size_tets, int fd)
+int				input_array(t_input_space *i_s)
 {
-	USI		block;
-	char	*line;
-	size_t	line_size;
-	char	tetramino[17];
-	int		err;
-
-	if (!tets || !size_tets)
-		return (-71);
-	block = 0;
-	while (get_next_line(fd, &line) == 1)
+	i_s->block = 0;
+	while (get_next_line(i_s->fd, &(i_s->line)) == 1)
 	{
-		line_size = ft_strlen(line);
-		block++;
-		if (block == 5)
+		i_s->line_size = ft_strlen(i_s->line);
+		i_s->block++;
+		if (i_s->block == 5)
 		{
-			if (line_size)
-			{
-				free(line);
+			if (i_s->line_size)
 				return (70);
-			}
-			ft_strclr(tetramino);
-			block = 0;
+			ft_strclr(i_s->tetramino);
+			i_s->block = 0;
 		}
 		else
-		{
-			if ((line_size != 4) || (search_invalid_ch(line) != 1))
-			{
-				free(line);
+			if ((i_s->line_size != 4) || (search_invalid_ch(i_s->line) != 1))
 				return (70);
-			}
-		}
-		ft_strcat(tetramino, line);
-		free(line);
-		if (block == 4)
-		{
-			if ((err = tet_to_array(tets, size_tets, tetramino) != 61))
-				return (err);
-		}
+		ft_strcat(i_s->tetramino, i_s->line);
+		if (i_s->block == 4)
+			if ((i_s->err = tet_to_array(i_s->tets, &(i_s->size_tets), i_s->tetramino) != 61))
+				return (i_s->err);
 	}
-	if (block != 4)
+	if (i_s->block != 4)
 		return (70);
 	return (71);
 }
 
-int			main(int argc, char *argv[])
+int				die(char *str)
 {
-	int		fd;
-	USI	 tets[26];
-	USI	 size_tets;
+	ft_putendl(str);
+	return (1);
+}
+
+void			init_SS(t_input_space IS, t_solve_space *SS)
+{
+	SS = ft_memalloc(sizeof(t_solve_space));
+	SS->abs_size = estimate_max(IS.size_tets);
+	SS->map = ft_memalloc(sizeof(char) * (SS->abs_size * SS->abs_size + 1));
+	SS->tet_num = IS.size_tets;
+	SS->tetramino = (USI*) malloc(sizeof(USI) * SS->tet_num);
+	ft_memcpy(SS->tetramino, IS.tets, (IS.size_tets + 1) * sizeof(USI));
+}
+
+int				main(int argc, char *argv[])
+{
+	t_input_space		IS;
+	t_solve_space		*SS;
+	int					i;
+
+	IS.size_tets = 0;
+	if (argc != 2)
+		return (die("usage: ./fillit [input_file]"));
+	IS.fd = open(argv[1], O_RDONLY);
+	if (input_array(&IS) != 71)
+	{
+		close(IS.fd);
+		return (die("error"));
+	}
 
 
-	size_tets = 0;
+	SS = ft_memalloc(sizeof(t_solve_space));
+	SS->abs_size = estimate_max(IS.size_tets);
+	SS->map = ft_memalloc(sizeof(char) * (SS->abs_size * SS->abs_size + 1));
+	SS->tet_num = IS.size_tets;
+	SS->tetramino = (USI*) malloc(sizeof(USI) * SS->tet_num);
+	ft_memcpy(SS->tetramino, IS.tets, (IS.size_tets + 1) * sizeof(USI));
 
-	if (argc == 1)
-		fd = 0;
-	else if (argc == 2)
-		fd = open(argv[1], O_RDONLY);
-	else
-		return (2);
-	printf("\nfunc rez %d\n", input_array(tets,  &size_tets, fd));
-
-
-	if (argc == 2)
-		close(fd);
-	return 0;
+	i = estimate_min(SS->tet_num);
+	while (i++ <= SS->abs_size)
+	{
+		if (solver(SS, 0, 0, i))
+		{
+			output(SS, i);
+			exit(0);
+		}
+	}
+	return (0);
 }
