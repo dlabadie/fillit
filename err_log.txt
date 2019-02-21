@@ -1,0 +1,97 @@
+fillit_checker by agadhgad
+rm -rf ./obj/
+make -C ./libft/ clean
+rm -f *.o
+rm -rf fillit
+make -C ./libft/ fclean
+rm -f *.o
+rm -f libft.a
+mkdir -p ./obj/
+make -C ./libft/
+gcc -Wall -Werror -Wextra -I. -c ft*.c
+ar rcs libft.a *.o
+gcc -Wall -Wextra -Werror  -I ./libft -I ./includes/ -o obj/main.o -c src/main.c
+gcc -Wall -Wextra -Werror  -I ./libft -I ./includes/ -o obj/solver.o -c src/solver.c
+gcc -Wall -Wextra -Werror  -I ./libft -I ./includes/ -o obj/inputting1.o -c src/inputting1.c
+gcc -Wall -Wextra -Werror  -I ./libft -I ./includes/ -o obj/inputting2.o -c src/inputting2.c
+gcc -Wall -Wextra -Werror  -I ./libft -I ./includes/ -o obj/helpers.o -c src/helpers.c
+gcc -Wall -Wextra -Werror ./obj/main.o ./obj/solver.o ./obj/inputting1.o ./obj/inputting2.o ./obj/helpers.o  -L ./libft -l ft -lm -o fillit
+--- begin of invalid test ---
+invalid test 0 : ok
+invalid test 1 : ok
+invalid test 2 : ok
+invalid test 3 : ok
+invalid test 4 : ok
+invalid test 5 : ok
+invalid test 6 : ok
+invalid test 7 : ok
+invalid test 8 : ok
+invalid test 9 : ok
+invalid test 10 : ok
+invalid test 11 : ok
+invalid test 12 : ok
+invalid test 13 : ok
+invalid test 14 : ok
+invalid test 15 : ok
+invalid test 16 : ok
+invalid test 17 : ok
+invalid test 18 : ok
+invalid test 19 : ok
+invalid test 20 : ok
+invalid test 21 : ok
+invalid test 22 : ok
+invalid test 23 : ok
+invalid test 24 : ok
+invalid test 25 : ok
+--- end of invalid test ---
+invalid test succeed, 26 / 26
+--- begin of valid test ---
+valid test 0 : ok
+valid test 1 : ok
+valid test 2 : ok
+valid test 3 : ok
+valid test 4 : ok
+valid test 5 : ok
+valid test 6 : ok
+valid test 7 : fail :/
+WHAT IS EXPECTED:
+BBB
+B.A
+AAA
+YOUR OUTPUT:
+..A.
+AAA.
+BBB.
+B...
+valid test 8 : ok
+valid test 9 : ok
+valid test 10 : ok
+valid test 11 : ok
+valid test 12 : ok
+valid test 13 : ok
+valid test 14 : ok
+valid test 15 : ok
+valid test 16 : ok
+valid test 17 : fail :/
+WHAT IS EXPECTED:
+.AAB.
+AABBC
+D.BCC
+DD..C
+D....
+YOUR OUTPUT:
+error
+valid test 18 : fail :/
+WHAT IS EXPECTED:
+.ABBB.
+AAC.BG
+A.CCGG
+E.CDG.
+EDDDF.
+EEFFF.
+YOUR OUTPUT:
+error
+valid test 19 : ok
+--- end of valid test ---
+valid test failed, 17 / 20
+NOTE: 43 / 46

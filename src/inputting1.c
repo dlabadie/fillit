@@ -83,7 +83,8 @@ static int		tet_to_array(USI *tets, USI *size_tets, char *tetramino)
 int				input_array(t_input_space *i_s)
 {
 	i_s->block = 0;
-	while (ft_get_next_line(i_s->fd, &(i_s->line)) == 1)
+	i_s->imp_char = 0;
+	while (get_next_line(i_s->fd, &(i_s->line)) == 1)
 	{
 		i_s->line_size = ft_strlen(i_s->line);
 		i_s->block++;
@@ -93,8 +94,9 @@ int				input_array(t_input_space *i_s)
 				return (70);
 			ft_strclr(i_s->tetramino);
 			i_s->block = 0;
+			i_s->imp_char = 0;
 		}
-		else if ((i_s->line_size != 4) || (search_invalid_ch(i_s->line) != 1))
+		else if ((i_s->line_size != 4) || (search_invalid_ch(i_s) != 1) || (i_s->imp_char > 4))
 			return (70);
 		ft_strcat(i_s->tetramino, i_s->line);
 		if (i_s->block == 4)

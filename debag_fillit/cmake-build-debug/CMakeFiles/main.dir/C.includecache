@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/ekedge-w/projects/debag_fillit/fillit.h
+stdio.h
+-
+stdlib.h
+-
+unistd.h
+-
+fcntl.h
+-
+sys/types.h
+-
+sys/uio.h
+-
+libft/libft.h
+/Users/ekedge-w/projects/debag_fillit/libft/libft.h
+
+/Users/ekedge-w/projects/debag_fillit/libft/libft.h
+string.h
+-
+unistd.h
+-
+stdlib.h
+-
+fcntl.h
+-
+
+/Users/ekedge-w/projects/debag_fillit/main.c
+fillit.h
+/Users/ekedge-w/projects/debag_fillit/fillit.h
+
+/Users/ekedge-w/projects/debag_fillit/solver.c
+fillit.h
+/Users/ekedge-w/projects/debag_fillit/fillit.h
+

@@ -105,6 +105,6 @@ void				ft_free(void *ptr);
 size_t				ft_allocated_size(void *ptr);
 void				*ft_realloc(void *ptr, size_t new_size);
 
-int					ft_get_next_line(const int fd, char **line);
+int					get_next_line(const int fd, char **line);
 
 #endif

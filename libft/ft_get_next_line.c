@@ -63,7 +63,7 @@ static int		reading(const int fd, char **content)
 	return (read_result);
 }
 
-int				ft_get_next_line(const int fd, char **line)
+int				get_next_line(const int fd, char **line)
 {
 	char			buf[BUFF_SIZE + 1];
 	size_t			read_result;

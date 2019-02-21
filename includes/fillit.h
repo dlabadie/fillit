@@ -44,6 +44,7 @@ typedef struct		s_input_space
 	size_t			line_size;
 	char			tetramino[17];
 	int				err;
+	int 			imp_char;
 }					t_input_space;
 
 int					solver(t_solve_space *solve_space,
@@ -58,7 +59,7 @@ int					die(char *str);
 int					input_array(t_input_space *i_s);
 int					create_int(const USI *positions, USI *result);
 int					shift_upper_left(USI *positions);
-int					search_invalid_ch(char *line);
+int					search_invalid_ch(t_input_space *i_s);
 int					search_pos(const char *tetramino, USI *positions);
 
 #endif

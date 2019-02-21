@@ -50,14 +50,19 @@ int		shift_upper_left(USI *positions)
 	return (21);
 }
 
-int		search_invalid_ch(char *line)
+int		search_invalid_ch(t_input_space *i_s)
 {
+	char *line;
+
+	line = i_s->line;
 	if (line == NULL)
 		return (-1);
 	while (*line)
 	{
 		if ((*line) != '#' && (*line) != '.')
 			return (0);
+		if ((*line) == '#')
+			i_s->imp_char++;
 		line++;
 	}
 	return (1);
