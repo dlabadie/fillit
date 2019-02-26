@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                			    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekedge-w <ekedge-w@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlabadie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/10 10:26:25 by ekedge-w          #+#    #+#             */
-/*   Updated: 2019/02/18 15:52:31 by ekedge-w         ###   ########.fr       */
+/*   Created: 2019/02/26 17:13:37 by dlabadie          #+#    #+#             */
+/*   Updated: 2019/02/26 17:13:53 by dlabadie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static void		init_ss(t_input_space IS, t_solve_space **SS)
+static void		init_ss(t_input_space input_space, t_solve_space **solve_space)
 {
 	*SS = ft_memalloc(sizeof(t_solve_space));
 	(*SS)->abs_size = estimate_max(IS.size_tets);
@@ -29,13 +29,16 @@ static void		free_ss(t_solve_space **solve_space)
 	free((*SS)->map);
 	free(*SS);
 }
-static int		show_close(t_solve_space **SS, t_input_space IS, unsigned int i)
+
+static int		show_close(t_solve_space **solve_space, \
+t_input_space input_space, unsigned int i)
 {
 	output(*SS, i);
 	close(IS.fd);
 	free_ss(solve_space);
 	return (0);
 }
+
 int				main(int argc, char *argv[])
 {
 	t_input_space		input_space;

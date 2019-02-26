@@ -41,18 +41,17 @@ void				output(t_solve_space *solve_space, unsigned int cur_size)
 	}
 }
 
-
-unsigned int	estimate_min(unsigned int tet_num)
+unsigned int		estimate_min(unsigned int tet_num)
 {
 	return (ft_sqrt(tet_num * 4));
 }
 
-unsigned int	estimate_max(unsigned int tet_num)
+unsigned int		estimate_max(unsigned int tet_num)
 {
 	return (tet_num * 4);
 }
 
-int				die(char *str)
+int					die(char *str)
 {
 	ft_putendl(str);
 	return (1);

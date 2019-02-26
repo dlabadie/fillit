@@ -6,7 +6,7 @@
 /*   By: ekedge-w <ekedge-w@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 10:26:25 by ekedge-w          #+#    #+#             */
-/*   Updated: 2019/02/18 15:52:31 by ekedge-w         ###   ########.fr       */
+/*   Updated: 2019/02/26 17:18:52 by dlabadie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ typedef struct		s_input_space
 	size_t			line_size;
 	char			tetramino[17];
 	int				err;
-	int 			imp_char;
+	int				imp_char;
 }					t_input_space;
 
 int					solver(t_solve_space *solve_space,
 							unsigned int place,
 							unsigned int cur_tet,
 							unsigned int cur_size);
-void					output(t_solve_space *solve_space,
+void				output(t_solve_space *solve_space,
 							unsigned int cur_size);
 unsigned int		estimate_min(unsigned int tet_num);
 unsigned int		estimate_max(unsigned int tet_num);

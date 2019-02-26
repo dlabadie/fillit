@@ -84,7 +84,7 @@ int		search_pos(const char *tetramino, USI *positions)
 			j++;
 			if (j > 4)
 				return (30);
-			positions[j] = (USI) i;
+			positions[j] = (USI)i;
 		}
 	}
 	return (31);

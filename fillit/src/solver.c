@@ -13,9 +13,9 @@
 #include "fillit.h"
 
 static int				erase_tetramino(t_solve_space *solve_space,
-										  unsigned int place,
-										  unsigned int cur_tet,
-										  unsigned int cur_size)
+										unsigned int place,
+										unsigned int cur_tet,
+										unsigned int cur_size)
 {
 	unsigned char		i;
 	unsigned char		j;
@@ -41,9 +41,9 @@ static int				erase_tetramino(t_solve_space *solve_space,
 }
 
 static int				fill_place(t_solve_space *solve_space,
-									 unsigned int place,
-									 unsigned int cur_tet,
-									 unsigned int cur_size)
+	unsigned int place,
+	unsigned int cur_tet,
+	unsigned int cur_size)
 {
 	unsigned char		i;
 	unsigned char		j;
@@ -69,9 +69,9 @@ static int				fill_place(t_solve_space *solve_space,
 }
 
 static int				check_place(t_solve_space *solve_space,
-									  unsigned int place,
-									  unsigned int cur_tet,
-									  unsigned int cur_size)
+										unsigned int place,
+										unsigned int cur_tet,
+										unsigned int cur_size)
 {
 	unsigned char		i;
 	unsigned char		j;
@@ -101,9 +101,9 @@ static int				check_place(t_solve_space *solve_space,
 }
 
 static unsigned int		find_place(t_solve_space *solve_space,
-									  unsigned int *place,
-									  unsigned int cur_tet,
-									  unsigned int cur_size)
+	unsigned int *place,
+	unsigned int cur_tet,
+	unsigned int cur_size)
 {
 	if (*place >= cur_size * cur_size)
 		return (0);
@@ -118,9 +118,9 @@ static unsigned int		find_place(t_solve_space *solve_space,
 }
 
 int						solver(t_solve_space *solve_space,
-								  unsigned int place,
-								  unsigned int cur_tet,
-								  unsigned int cur_size)
+	unsigned int place,
+	unsigned int cur_tet,
+	unsigned int cur_size)
 {
 	if (cur_tet == SS->tet_num)
 		return (1);

@@ -100,8 +100,7 @@ int				input_array(t_input_space *i_s)
 			return (70);
 		ft_strcat(i_s->tetramino, i_s->line);
 		if (i_s->block == 4)
-			if ((i_s->err = tet_to_array(i_s->tets, &(i_s->size_tets), \
-	i_s->tetramino) != 61))
+			if ((i_s->err = tet_to_array(i_s->tets, &(i_s->size_tets), i_s->tetramino) != 61))
 				return (i_s->err);
 	}
 	if (i_s->block != 4)
