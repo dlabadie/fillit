@@ -51,7 +51,7 @@ int					solver(t_solve_space *solve_space,
 							unsigned int place,
 							unsigned int cur_tet,
 							unsigned int cur_size);
-int					output(t_solve_space *solve_space,
+void					output(t_solve_space *solve_space,
 							unsigned int cur_size);
 unsigned int		estimate_min(unsigned int tet_num);
 unsigned int		estimate_max(unsigned int tet_num);

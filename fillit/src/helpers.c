@@ -12,36 +12,39 @@
 
 #include "fillit.h"
 
-int				output(t_solve_space *solve_space, unsigned int cur_size)
+void				output(t_solve_space *solve_space, unsigned int cur_size)
 {
-	int i;
-	int j;
+	unsigned int	i;
+	unsigned int	j;
 
-	i = -1;
-	while ((unsigned int)(++i) < cur_size)
+	i = 0;
+	while (i < cur_size)
 	{
-		j = -1;
-		while ((unsigned int)(++j) < cur_size)
+		j = 0;
+		while (j < cur_size)
 		{
-			if (SS->map[i * cur_size + j] >= 'A' && \
-				SS->map[i * cur_size + j] <= 'Z')
-				printf("%c", SS->map[i * cur_size + j]);
+			if (SS->map[i * cur_size + j] >= 'A'
+				&& SS->map[i * cur_size + j] <= 'Z')
+				ft_putchar(SS->map[i * cur_size + j]);
 			else if (SS->map[i * cur_size + j] == '\0')
-				printf(".");
+				ft_putchar('.');
 			else
-				printf("\n%i\n", SS->map[i * cur_size + j]);
+			{
+				ft_putchar('\n');
+				ft_putchar(SS->map[i * cur_size + j]);
+				ft_putchar('\n');
+			}
+			j++;
 		}
-		printf("\n");
+		i++;
+		ft_putchar('\n');
 	}
-	return (0);
 }
+
 
 unsigned int	estimate_min(unsigned int tet_num)
 {
-	unsigned int	es;
-
-	es = ft_sqrt(tet_num * 4);
-	return ((es < 4) ? 4 : es);
+	return (ft_sqrt(tet_num * 4));
 }
 
 unsigned int	estimate_max(unsigned int tet_num)
