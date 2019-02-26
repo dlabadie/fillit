@@ -16,7 +16,7 @@ static int		init_base(USI *base)
 {
 	if (!base)
 		return (-41);
-	base[0] = 9584;
+	base[0] = 19584;
 	base[1] = 11776;
 	base[2] = 17600;
 	base[3] = 19520;
